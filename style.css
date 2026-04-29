@@ -1,15 +1,74 @@
+@font-face {
+    font-family: 'PlusJakartaSans-Regular';
+    src: url('assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'PlusJakartaSans-Bold';
+    src: url('assets/fonts/Plus_Jakarta_Sans/PlusJakartaSans-Bold.ttf') format('truetype');
+}
+
 :root {
-    --primary-color: #185a85;
-    --secondary-color: #ef8f00;
-    --danger-color: #ea1717;
-    --border-color: #cfcfcf;
-    --backdrop-color: #00000080;
-    --light: #ffffff;
-    --dark: #000000;
+    /* Fonts */
+    --font-heading: 'PlusJakartaSans-Bold', sans-serif;
+    --font-body: 'PlusJakartaSans-Regular', sans-serif;
+
+    /* Colors */
+    --color-primary: #185a85;
+    --color-secondary: #ef8f00;
+    --color-danger: #ea1717;
+    --color-border: #cfcfcf;
+    --color-backdrop: #00000080;
+    --color-surface: #ffffff;
+    --color-text: #000000;
 }
 
 * {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+}
+
+h1 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+
+h3 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+h4 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+h5 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+h6 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+
+p {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }
 
 button {
@@ -26,58 +85,28 @@ button {
     }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin: initial;
-}
-
 input {
     padding: 0.5rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--color-border);
     border-radius: 0.25rem;
 
     &:focus {
-        border: 1px solid var(--primary-color);
+        border: 1px solid var(--color-primary);
         outline: none;
     }
 }
 
-#createContactButton {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-bottom: 2px solid var(--dark);
-    border-radius: 0.5rem;
-    font-size: x-large;
-    background: var(--primary-color);
-    color: var(--light);
+.font-heading {
+    font-family: var(--font-heading);
 }
 
-#updateContact {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: var(--secondary-color);
-    color: var(--light);
+.font-body {
+    font-family: var(--font-body);
 }
 
-#deleteContact {
+.form-group {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    background-color: transparent;
-    border: 1px solid var(--danger-color) !important;
-    color: var(--danger-color);
-}
-
-.info {
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 0.5rem;
 }
 
@@ -91,7 +120,7 @@ input {
     align-items: center;
     width: 100%;
     height: 100%;
-    background: var(--backdrop-color);
+    background: var(--color-backdrop);
     backdrop-filter: blur(4px);
 
     &.hidden {
@@ -108,15 +137,53 @@ input {
     gap: 1rem;
     padding: 2rem;
     border-radius: 1rem;
-    background: var(--light);
+    background: var(--color-surface);
 
     & button[type="submit"] {
         padding: 0.7rem;
         border: none;
         border-radius: 0.5rem;
-        background: var(--primary-color);
-        color: var(--light);
+        background: var(--color-primary);
+        color: var(--color-surface);
     }
+}
+
+.close-button {
+    margin-left: auto;
+    padding: 0.25rem 0.75rem;
+    font-size: x-large;
+    border: 1px solid var(--color-text);
+    border-radius: 0.5rem;
+    background-color: transparent;
+}
+
+#createContactButton {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-bottom: 2px solid var(--color-text);
+    border-radius: 0.5rem;
+    font-size: x-large;
+    background: var(--color-primary);
+    color: var(--color-surface);
+}
+
+#updateContact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-secondary);
+    color: var(--color-surface);
+}
+
+#deleteContact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: transparent;
+    border: 1px solid var(--color-danger) !important;
+    color: var(--color-danger);
 }
 
 #contactForm {
@@ -124,17 +191,39 @@ input {
     gap: 1rem;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
+@media (min-width: 768px) {
+    h1 {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+    }
 
-.close-button {
-    margin-left: auto;
-    padding: 0.25rem 0.75rem;
-    font-size: x-large;
-    border: 1px solid var(--dark);
-    border-radius: 0.5rem;
-    background-color: transparent;
+    h2 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+
+    h4 {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+
+    h5 {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    h6 {
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+
+    p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
 }
